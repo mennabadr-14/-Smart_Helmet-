@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "author": "Menna Hassan",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": { "env": "micropython-20260406-v1.28.0" }
+    },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 31.5, "left": -165.8, "attrs": {} },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": 215.02, "left": 2.32, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -103.2,
+      "left": -180.6,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -134.1,
+      "left": -72.6,
+      "attrs": { "temperature": "33.3" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 25.6,
+      "left": 120.8,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -113.7,
+      "left": 15.1,
+      "attrs": { "distance": "2" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -106.9, "left": 230.2, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 131,
+      "left": -153.6,
+      "attrs": { "color": "green", "xray": "1" }
+    }
+  ],
+  "connections": [
+    [ "lcd1:SDA", "pico:GP4", "green", [ "h-28.8", "v0.2", "h0", "v-86.4", "h-105.6", "v48" ] ],
+    [ "lcd1:SCL", "pico:GP5", "green", [ "h-28.8", "v-86.1", "h-115.2", "v9.6" ] ],
+    [ "lcd1:GND", "pico:GND.8", "black", [ "h-9.6", "v-19.2" ] ],
+    [ "ultrasonic1:GND", "pico:GND.8", "black", [ "v48", "h-1.2" ] ],
+    [ "imu1:VCC", "pico:3V3", "red", [ "v-9.6", "h9.68", "v-153.6" ] ],
+    [ "imu1:GND", "pico:GND.5", "black", [ "v-19.2", "h28.88", "v-9.6" ] ],
+    [ "imu1:SCL", "pico:GP5", "green", [ "v-9.6", "h-67.12", "v-124.8" ] ],
+    [ "imu1:SDA", "pico:GP4", "green", [ "v-19.2", "h-67.12", "v-115.2" ] ],
+    [ "dht1:SDA", "pico:GP2", "green", [ "v28.8", "h0.1", "v9.6" ] ],
+    [ "dht1:VCC", "pico:3V3", "red", [ "v28.8", "h163.2", "v48" ] ],
+    [ "dht1:GND", "pico:GND.1", "black", [ "v48" ] ],
+    [ "gas1:AOUT", "pico:GP27", "green", [ "h9.6", "v240", "h124.8", "v-144" ] ],
+    [ "gas1:GND", "pico:GND.1", "black", [ "h19.2", "v-20" ] ],
+    [ "gas1:VCC", "pico:3V3", "red", [ "h9.6", "v-87.3", "h124.8", "v57.6" ] ],
+    [ "ultrasonic1:ECHO", "pico:GP17", "green", [ "v0" ] ],
+    [ "ultrasonic1:TRIG", "pico:GP16", "green", [ "v0" ] ],
+    [ "ultrasonic1:VCC", "pico:VBUS", "red", [ "v0" ] ],
+    [ "lcd1:VCC", "pico:VBUS", "red", [ "h0", "v-57.5" ] ],
+    [ "pot1:VCC", "pico:3V3", "red", [ "v48", "h-164", "v57.6" ] ],
+    [ "pot1:SIG", "pico:GP28", "green", [ "v38.4", "h-173.2", "v76.8" ] ],
+    [ "pot1:GND", "pico:GND.8", "black", [ "v28.8", "h-115.2", "v28.8" ] ],
+    [ "bz1:2", "pico:GP15", "green", [ "v28.8", "h-29.2", "v96" ] ],
+    [ "bz1:1", "pico:GND.1", "green", [ "v9.6", "h48", "v19.2" ] ],
+    [ "btn1:1.r", "pico:GP14", "green", [ "v0", "h48.2", "v38.4" ] ],
+    [ "btn1:2.r", "pico:GND.4", "green", [ "h57.8", "v9.8" ] ]
+  ],
+  "dependencies": {}
+}
