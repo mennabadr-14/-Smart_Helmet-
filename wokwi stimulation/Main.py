@@ -20,10 +20,10 @@ WIFI_SSID = "Wokwi-GUEST"
 WIFI_PASS = ""
 
 # ---------- HiveMQ Cloud (private cluster, TLS + auth) ----------
-HM_HOST = ".s1.eu.hivemq.cloud"
+HM_HOST = "0bd3157b06504b2fabb013f26081d4e6.s1.eu.hivemq.cloud"
 HM_PORT = 8883
-HM_USER = "user name"      # same user you created in HiveMQ Cloud
-HM_PASS = "password"
+HM_USER = "amaal"      # same user you created in HiveMQ Cloud
+HM_PASS = "12345678"
 
 # Quick test switch: False = public broker, port 1883, no TLS/auth (for debugging only)
 USE_TLS = True
@@ -35,7 +35,7 @@ TOPIC_ALERTS = b"so-m8k2/helmet/alerts"
 # ---------- Thresholds ----------
 TEMP_LIMIT = 45.0          # C
 O2_LIMIT = 88.0            # %
-FALL_IMPACT_G = 2.5        # sudden spike (g)
+FALL_IMPACT_G = 1.5        # sudden spike (g)
 STILL_BAND_G = 0.35        # after the spike: |a-1g| < this = still
 CANCEL_WINDOW = 5000       # ms to press the button to cancel the fall alert
 NOISE_LIMIT = 80.0         # % (potentiometer)
