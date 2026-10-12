@@ -20,10 +20,10 @@ WIFI_SSID = "Wokwi-GUEST"
 WIFI_PASS = ""
 
 # ---------- HiveMQ Cloud (private cluster, TLS + auth) ----------
-HM_HOST = "0bd3157b06504b2fabb013f26081d4e6.s1.eu.hivemq.cloud"
+HM_HOST = ".s1.eu.hivemq.cloud"
 HM_PORT = 8883
-HM_USER = "amaal"      # same user you created in HiveMQ Cloud
-HM_PASS = "12345678"
+HM_USER = "user name"      # same user you created in HiveMQ Cloud
+HM_PASS = "password"
 
 # Quick test switch: False = public broker, port 1883, no TLS/auth (for debugging only)
 USE_TLS = True
@@ -227,7 +227,7 @@ def send_alert(kind, msg, **extra):
     lat, lon = read_gps()
     data = {"type": kind, "message": msg, "lat": lat, "lon": lon}
     data.update(extra)
-    pending.append(ujson.dumps(data))
+    pending.append(ujson.dumps(data).encode())   # bytes, so the MQTT length is correct with the emoji
     if len(pending) > 10:
         pending.pop(0)
     print("ALERT ->", data)
